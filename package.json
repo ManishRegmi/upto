@@ -2,7 +2,7 @@
   "name": "uptodate",
   "displayName": "UptoDate",
   "description": "Prevent outdated pushes with smart branch sync checks before every Git push.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "ManishRegmi",
   "license": "MIT",
   "icon": "images/img.png",

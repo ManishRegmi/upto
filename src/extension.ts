@@ -8,21 +8,7 @@ import {
     viewTrackedBranchesCommand
 } from './commands/trackedBranchesCommand';
 import { TerminalGitInterceptor } from './services/terminalGitInterceptor';
-
-function getRootPath() {
-    return vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
-}
-
-function requireRootPath(action: string) {
-    const rootPath = getRootPath();
-
-    if (!rootPath) {
-        vscode.window.showWarningMessage(`Open a workspace folder before ${action}.`);
-        return;
-    }
-
-    return rootPath;
-}
+import { pickRepositoryRoot } from './services/repositoryService';
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -38,7 +24,7 @@ export function activate(context: vscode.ExtensionContext) {
             await safePush(context);
         }),
         vscode.commands.registerCommand('upto.track', async () => {
-            const rootPath = requireRootPath('tracking branches');
+            const rootPath = await pickRepositoryRoot('tracking branches');
 
             if (!rootPath) {
                 return;
@@ -47,7 +33,7 @@ export function activate(context: vscode.ExtensionContext) {
             await trackCommand(context, rootPath);
         }),
         vscode.commands.registerCommand('upto.status', async () => {
-            const rootPath = requireRootPath('checking branch status');
+            const rootPath = await pickRepositoryRoot('checking branch status');
 
             if (!rootPath) {
                 return;
@@ -56,7 +42,7 @@ export function activate(context: vscode.ExtensionContext) {
             await statusCommand(context, rootPath);
         }),
         vscode.commands.registerCommand('upto.trackedBranches.view', async () => {
-            const rootPath = requireRootPath('viewing tracked branches');
+            const rootPath = await pickRepositoryRoot('viewing tracked branches');
 
             if (!rootPath) {
                 return;
@@ -65,7 +51,7 @@ export function activate(context: vscode.ExtensionContext) {
             await viewTrackedBranchesCommand(context, rootPath);
         }),
         vscode.commands.registerCommand('upto.trackedBranches.add', async () => {
-            const rootPath = requireRootPath('adding tracked branches');
+            const rootPath = await pickRepositoryRoot('adding tracked branches');
 
             if (!rootPath) {
                 return;
@@ -74,7 +60,7 @@ export function activate(context: vscode.ExtensionContext) {
             await addTrackedBranchesCommand(context, rootPath);
         }),
         vscode.commands.registerCommand('upto.trackedBranches.remove', async () => {
-            const rootPath = requireRootPath('removing tracked branches');
+            const rootPath = await pickRepositoryRoot('removing tracked branches');
 
             if (!rootPath) {
                 return;

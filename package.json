@@ -1,11 +1,11 @@
 {
   "name": "uptodate",
-  "displayName": "Upto",
+  "displayName": "UptoDate",
   "description": "Prevent outdated pushes with smart branch sync checks before every Git push.",
   "version": "0.0.1",
   "publisher": "ManishRegmi",
   "license": "MIT",
-  "icon": "images/logo.png",
+  "icon": "images/img.png",
   "engines": {
     "vscode": "^1.120.0"
   },

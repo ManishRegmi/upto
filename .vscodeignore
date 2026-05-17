@@ -2,9 +2,13 @@
 .vscode-test/**
 out/**
 node_modules/**
+.pnpm-store/**
 src/**
 .gitignore
 .yarnrc
+package-lock.json
+pnpm-lock.yaml
+pnpm-workspace.yaml
 esbuild.js
 vsc-extension-quickstart.md
 **/tsconfig.json

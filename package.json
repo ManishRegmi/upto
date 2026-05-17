@@ -1,9 +1,10 @@
 {
-  "name": "upto",
-  "displayName": "upto",
+  "name": "uptodate",
+  "displayName": "Upto",
   "description": "Prevent outdated pushes with smart branch sync checks before every Git push.",
   "version": "0.0.1",
   "publisher": "ManishRegmi",
+  "license": "MIT",
   "icon": "images/logo.png",
   "engines": {
     "vscode": "^1.120.0"
@@ -13,7 +14,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ManishRegmi/upto.git"
+    "url": "git+https://github.com/ManishRegmi/upto.git"
+  },
+  "homepage": "https://github.com/ManishRegmi/upto#readme",
+  "bugs": {
+    "url": "https://github.com/ManishRegmi/upto/issues"
   },
   "activationEvents": [
     "onStartupFinished",
@@ -85,10 +90,8 @@
     "esbuild": "^0.27.3",
     "eslint": "^9.39.3",
     "npm-run-all": "^4.1.5",
+    "simple-git": "^3.36.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.1"
-  },
-  "dependencies": {
-    "simple-git": "^3.36.0"
   }
 }

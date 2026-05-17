@@ -4,13 +4,30 @@
   "description": "Prevent outdated pushes with smart branch sync checks before every Git push.",
   "version": "0.0.1",
   "publisher": "ManishRegmi",
+  "license": "MIT",
   "engines": {
-    "vscode": "^1.119.0"
+    "vscode": "^1.120.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": ["*"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ManishRegmi/upto.git"
+  },
+  "homepage": "https://github.com/ManishRegmi/upto#readme",
+  "bugs": {
+    "url": "https://github.com/ManishRegmi/upto/issues"
+  },
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:upto.push",
+    "onCommand:upto.track",
+    "onCommand:upto.trackedBranches.view",
+    "onCommand:upto.trackedBranches.add",
+    "onCommand:upto.trackedBranches.remove",
+    "onCommand:upto.status"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [

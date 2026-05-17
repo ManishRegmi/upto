@@ -1,71 +1,192 @@
-# upto README
+UpTo
 
-This is the README for your extension "upto". After writing up a brief description, we recommend including the following sections.
+Prevent outdated pushes with smart branch sync checks before every Git push.
 
-## Features
+UpTo is a VS Code extension designed to prevent integration conflicts, broken staging environments, and “I forgot to pull” moments in collaborative Git workflows.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Instead of relying on developers to manually check whether their branch is up to date, UpTo automatically verifies tracked branches before a push and warns the developer when they are behind.
 
-For example if there is an image subfolder under your extension project workspace:
+Built for fast-moving teams working with:
 
-\!\[feature X\]\(images/feature-x.png\)
+main
+staging
+production
+release branches
+shared feature branches
+✨ Features
+✅ Smart Branch Sync Checks
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Before pushing, UpTo checks whether your current branch is behind selected tracked branches.
 
-## Requirements
+Example:
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Current Branch: feature/payment-refactor
+Tracked Branches:
+- main
+- staging
 
-## Extension Settings
+If main or staging has newer commits, UpTo warns the user before allowing the push.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+✅ Merge Protection Modal
 
-For example:
+If your branch is behind:
 
-This extension contributes the following settings:
+Your branch is behind 'staging' by 4 commits.
+Please merge before pushing.
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+Actions:
 
-## Known Issues
+Merge
+Push Anyway
+Cancel
+✅ Per-Developer Tracking
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+Every developer can choose which branches matter to them.
 
-## Release Notes
+Examples:
 
-Users appreciate release notes as you update your extension.
+main
+staging
+production
+release/v2
+✅ Works Across Repositories
 
-### 1.0.0
+Install once in VS Code and use across multiple Git repositories.
 
-Initial release of ...
+✅ Lightweight & Fast
+No external servers
+No GitHub App required
+No CI dependency
+Runs locally using Git
+🚀 Why UpTo Exists
 
-### 1.0.1
+Teams often face these issues:
 
-Fixed issue #.
+Developers forget to pull latest changes
+Staging crashes after outdated pushes
+Hidden merge conflicts appear late
+Shared environments become unstable
+Team members unknowingly overwrite each other
 
-### 1.1.0
+UpTo acts as a proactive safety layer between developers and Git pushes.
 
-Added features X, Y, and Z.
+🧠 How It Works
 
----
+UpTo performs these steps before a push:
 
-## Following extension guidelines
+git fetch origin
+↓
+Compare current branch with tracked branches
+↓
+Detect missing commits
+↓
+Show warning modal if behind
+↓
+Allow merge / cancel / push anyway
+📦 Installation
+From VS Code Marketplace
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+Coming soon.
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+Local Development Installation
 
-## Working with Markdown
+Clone the repository:
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+git clone <repository-url>
+cd upto
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+Install dependencies:
 
-## For more information
+pnpm install
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+Run extension in development mode:
 
-**Enjoy!**
+F5
+
+This opens a new VS Code Extension Development Host window.
+
+⚙️ Requirements
+VS Code ^1.119.0
+Git installed
+Node.js >=18
+
+Recommended:
+
+pnpm
+🛠 Development Setup
+Install dependencies
+pnpm install
+Start watch mode
+pnpm run watch
+Run extension
+
+Press:
+
+F5
+
+inside VS Code.
+
+📁 Project Structure
+src/
+├── extension.ts
+├── git/
+│   ├── checker.ts
+│   └── commands.ts
+├── ui/
+│   └── pushModal.ts
+🧪 Commands
+UpTo: Secure Push
+
+Safely pushes current branch after sync validation.
+
+UpTo: Track Branches
+
+Configure tracked branches for update validation.
+
+UpTo: Status
+
+Shows current synchronization status against tracked branches.
+
+🔐 Philosophy
+
+UpTo is intentionally designed to:
+
+Warn developers early
+Reduce broken shared environments
+Preserve developer autonomy
+Avoid blocking legitimate workflows
+
+Developers always maintain final control.
+
+🏗 Roadmap
+Planned Features
+Terminal git push interception
+GitHub authentication
+Team-wide branch policies
+Auto-merge support
+Branch health indicators
+AI-assisted merge conflict explanation
+Pull request awareness
+Multi-repository workspace support
+GitLens integration
+Team sync dashboard
+🤝 Contributing
+
+Contributions are welcome.
+
+Development workflow
+git checkout -b feature/my-feature
+pnpm run watch
+📄 License
+
+MIT License
+
+👨‍💻 Author
+
+Built by Manish Regmi
+
+⭐ Vision
+
+UpTo aims to become the safety layer modern development teams never realized they needed:
+
+“Know before you push.”
